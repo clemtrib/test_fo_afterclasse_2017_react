@@ -1,0 +1,40 @@
+GET http://afterclasse.local/students
+Accept:*/*
+Cache-Control:no-cache
+
+<> 2017-12-16T020012.200.json
+
+###
+
+GET http://afterclasse.local/students
+Accept:*/*
+Cache-Control:no-cache
+
+<> 2017-12-16T015408.500.html
+
+###
+
+GET http://afterclasse.local/students
+Accept:*/*
+Cache-Control:no-cache
+
+<> 2017-12-16T015357.500.html
+
+###
+
+GET http://afterclasse.local/students
+Accept:*/*
+Cache-Control:no-cache
+
+<> 2017-12-16T015230.500.html
+
+###
+
+GET http://afterclasse.local/students
+Accept:*/*
+Cache-Control:no-cache
+
+<> 2017-12-16T015219.500.html
+
+###
+

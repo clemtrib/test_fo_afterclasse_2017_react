@@ -1,5 +1,11 @@
 {
   "name": "test_fo_afterclasse_2017_react",
   "version": "0.1.0",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "babel": "^6.23.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "redux": "^3.7.2"
+  }
 }

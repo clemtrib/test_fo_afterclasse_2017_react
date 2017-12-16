@@ -1,6 +1,20 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var createReactClass = require('create-react-class');
+var axios = require('axios');
+
+const urlApi = "http://afterclasse.local";
+
+function getStudents() {
+  return axios.get(urlApi + '/students');
+}
+
+var promiseObj = getStudents();
+promiseObj.then(function (data) {
+  console.log(data);
+}).catch(function (data) {
+  console.log('failure');
+});
 
 var Content = createReactClass({
   render: function() {
@@ -11,8 +25,12 @@ var Content = createReactClass({
     );
   }
 });
+
 ReactDOM.render(<Content />, document.getElementById('content'));
+
+
 /*
+
 function formatName(user) {
   return user.firstName + ' ' + user.lastName;
 }
@@ -27,8 +45,7 @@ const element = (
 );
 
 ReactDOM.render(
-  //element,
-  "<h1>marre</h1>",
+  element,
   document.getElementById('root')
 );
 

@@ -1,4 +1,6 @@
-var React = require('react');
+const React = require('react');
+const request = require('superagent');
+const urlApi = "http://afterclasse.local";
 
 class UserForm extends React.Component {
 
@@ -49,12 +51,35 @@ class UserForm extends React.Component {
   }
 
   handleSubmit(event) {
+
     event.preventDefault();
-    if (this.state.new) {
-      let data = JSON.stringify(this.state)
 
+    let data = JSON.stringify(this.state)
+
+    if (!this.state.new) {
+      request
+        .patch(urlApi + '/student')
+        .send(data)
+        .then(function (res) {
+          console.log('update: success');
+          // res.body, res.headers, res.status
+        })
+        .catch(function (err) {
+          console.log('update: failure');
+          // err.message, err.response
+        });
     } else {
-
+      request
+        .put(urlApi + '/student')
+        .send(data)
+        .then(function (res) {
+          console.log('update: success');
+          // res.body, res.headers, res.status
+        })
+        .catch(function (err) {
+          console.log('update: failure');
+          // err.message, err.response
+        });
     }
   }
 

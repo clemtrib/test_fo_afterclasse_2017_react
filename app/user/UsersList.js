@@ -1,6 +1,9 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var UserForm = require('./UserForm');
+const request = require('superagent');
+
+const urlApi = "http://afterclasse.local";
 
 class UsersListItem extends React.Component {
 

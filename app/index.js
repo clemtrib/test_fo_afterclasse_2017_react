@@ -1,8 +1,8 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var axios = require('axios');
-var UsersList = require('./user/UsersList');
-var Toolbar = require('./tools/Toolbar');
+const React = require('react');
+const ReactDOM = require('react-dom');
+const axios = require('axios');
+const UsersList = require('./user/UsersList');
+const Toolbar = require('./tools/Toolbar');
 
 const urlApi = "http://afterclasse.local";
 

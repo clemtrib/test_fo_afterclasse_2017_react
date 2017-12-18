@@ -33,9 +33,9 @@ class UsersListItem extends React.Component {
     const users = this.props.usersItem;
     const listUsers = users.map((user) =>
       <tr key={user.id}>
-        <td>{user.firstname} {user.lastname}</td>
-        <td>{user.email}</td>
-        <td>{user.phone}</td>
+        <td>{user.firstname} {user.lastname.toUpperCase()}</td>
+        <td>{user.email.toLocaleLowerCase()}</td>
+        <td>+33 (0) {user.phone}</td>
         <td>
           <button className="square" onClick={() => this.updateUser({user})}>
             Updade

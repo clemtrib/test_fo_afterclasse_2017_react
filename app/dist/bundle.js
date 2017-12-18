@@ -20625,16 +20625,17 @@ var UsersListItem = function (_React$Component) {
             null,
             user.firstname,
             ' ',
-            user.lastname
+            user.lastname.toUpperCase()
           ),
           React.createElement(
             'td',
             null,
-            user.email
+            user.email.toLocaleLowerCase()
           ),
           React.createElement(
             'td',
             null,
+            '+33 (0) ',
             user.phone
           ),
           React.createElement(

@@ -97,7 +97,7 @@ class UserForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <fieldset>
-          <legend>Coordonnées :</legend>
+          <legend>Coordonnées</legend>
           <label htmlFor="firstname">
             Prénom :
             <input aria-label="firstname" aria-required="true" name="firstname" id="firstname" type="text"
@@ -135,8 +135,8 @@ class UserForm extends React.Component {
             <input aria-label="email" aria-required="true" name="email" id="email" type="text" type="text" type="text"
                    value={this.state.email} onChange={this.handleChange}/>
           </label>
+          <input type="submit" value="Submit"/>
         </fieldset>
-        <input type="submit" value="Submit"/>
       </form>
     );
   }

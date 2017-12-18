@@ -2066,7 +2066,7 @@ var UserForm = function (_React$Component) {
           React.createElement(
             'legend',
             null,
-            'Coordonn\xE9es :'
+            'Coordonn\xE9es'
           ),
           React.createElement(
             'label',
@@ -2116,9 +2116,9 @@ var UserForm = function (_React$Component) {
             { htmlFor: 'email' },
             'Email :',
             React.createElement('input', (_React$createElement2 = { 'aria-label': 'email', 'aria-required': 'true', name: 'email', id: 'email', type: 'text' }, _defineProperty(_React$createElement2, 'type', 'text'), _defineProperty(_React$createElement2, 'type', 'text'), _defineProperty(_React$createElement2, 'value', this.state.email), _defineProperty(_React$createElement2, 'onChange', this.handleChange), _React$createElement2))
-          )
-        ),
-        React.createElement('input', { type: 'submit', value: 'Submit' })
+          ),
+          React.createElement('input', { type: 'submit', value: 'Submit' })
+        )
       );
     }
   }]);
@@ -20697,7 +20697,7 @@ var UsersList = function (_React$Component2) {
             React.createElement(
               'th',
               null,
-              'Nom et pr\xE9nom'
+              'Nom'
             ),
             React.createElement(
               'th',

@@ -1,7 +1,7 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var UserForm = require('./UserForm');
+const React = require('react');
+const ReactDOM = require('react-dom');
 const request = require('superagent');
+const UserForm = require('./UserForm');
 
 const urlApi = "http://afterclasse.local";
 
@@ -15,7 +15,18 @@ class UsersListItem extends React.Component {
   }
 
   deleteUser(user) {
-
+    let data = JSON.stringify(user.user)
+    request
+      .delete(urlApi + '/student')
+      .send(data)
+      .then(function (res) {
+        console.log('delete: success');
+        // res.body, res.headers, res.status
+      })
+      .catch(function (err) {
+        console.log('delete: failure');
+        // err.message, err.response
+      });
   }
 
   render() {
@@ -53,7 +64,7 @@ class UsersList extends React.Component {
           <th>Nom et prénom</th>
           <th>Email</th>
           <th>Téléphone</th>
-          <th>Actions</th>
+          <th></th>
         </tr>
         </thead>
         <tbody>

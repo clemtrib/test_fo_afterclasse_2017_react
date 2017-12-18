@@ -1,6 +1,12 @@
 const React = require('react');
+const ReactDOM = require('react-dom');
 const request = require('superagent');
+const Popup = require('react-popup');
 const urlApi = "http://afterclasse.local";
+
+
+//const popup = <Popup className="mm-popup" btnClass="mm-popup__btn" closeBtn={true} closeHtml={null} defaultOk="Ok" defaultCancel="Cancel" wildClasses={false} closeOnOutsideClick={true} />
+
 
 class UserForm extends React.Component {
 
@@ -25,7 +31,7 @@ class UserForm extends React.Component {
       const user = props.user.user;
       this.state = {
         new: false,
-        id: user.lastname,
+        id: user.id,
         lastname: user.lastname,
         firstname: user.firstname,
         address1: user.address1,
@@ -61,12 +67,16 @@ class UserForm extends React.Component {
         .patch(urlApi + '/student')
         .send(data)
         .then(function (res) {
-          console.log('update: success');
-          // res.body, res.headers, res.status
+          console.log('update: success', err.message);
         })
         .catch(function (err) {
-          console.log('update: failure');
-          // err.message, err.response
+          console.log('update: failure', err.message);
+          /*
+          ReactDOM.render(
+            <Popup />,
+            document.getElementById('popupContainer')
+          );
+          */
         });
     } else {
       request
@@ -89,12 +99,12 @@ class UserForm extends React.Component {
         <fieldset>
           <legend>Coordonnées :</legend>
           <label htmlFor="firstname">
-            Nom :
+            Prénom :
             <input aria-label="firstname" aria-required="true" name="firstname" id="firstname" type="text"
                    value={this.state.firstname} onChange={this.handleChange}/>
           </label>
           <label htmlFor="lastname">
-            Prénom :
+            Nom :
             <input aria-label="lastname" aria-required="true" name="lastname" id="lastname" type="text"
                    value={this.state.lastname} onChange={this.handleChange}/>
           </label>

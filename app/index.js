@@ -1,35 +1,27 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const axios = require('axios');
+const request = require('superagent');
 const UsersList = require('./user/UsersList');
 const Toolbar = require('./tools/Toolbar');
 
 const urlApi = "http://afterclasse.local";
 
-function getStudentsRest() {
-  return axios.get(urlApi + '/students');
-}
-
-function getStudents() {
-  var promiseObj = getStudentsRest();
-  promiseObj.then(function (data) {
-    const listStudents = data.data;
-    const element = <UsersList users={listStudents}/>;
+request
+  .get(urlApi + '/students')
+  .then(function (res) {
+    const element = <UsersList users={JSON.parse(res.text)}/>;
     ReactDOM.render(
       element,
       document.getElementById('content')
     );
-  }).catch(function (data) {
+  })
+  .catch(function (err) {
     const element = "Une erreur est survenue.";
     ReactDOM.render(
-      element,
+      err.message,
       document.getElementById('content')
     );
   });
-}
-
-//
-getStudents();
 
 ReactDOM.render(
   <Toolbar/>,

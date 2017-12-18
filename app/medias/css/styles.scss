@@ -51,6 +51,8 @@ button:hover {
 
 table {
     min-width: 100%;
+    border-collapse: collapse;
+    text-align: center;
 }
 
 table thead {
@@ -58,12 +60,8 @@ table thead {
     color: #ffffff;
 }
 
-table thead tr {
-    text-align: left;
-}
 
 tr {
-    text-align: left;
     border: 1px solid #2d9bf0;
 }
 
@@ -71,7 +69,6 @@ th, td {
     padding: 5px;
 }
 
-table {;
-    border-collapse: collapse;
+td:last-child > button{
+    float:right;
 }
-

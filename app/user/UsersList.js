@@ -61,7 +61,7 @@ class UsersList extends React.Component {
       <table>
         <thead>
         <tr>
-          <th>Nom et prénom</th>
+          <th>Nom</th>
           <th>Email</th>
           <th>Téléphone</th>
           <th></th>

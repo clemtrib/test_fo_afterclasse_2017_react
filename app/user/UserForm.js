@@ -67,10 +67,16 @@ class UserForm extends React.Component {
         .patch(urlApi + '/student')
         .send(data)
         .then(function (res) {
-          console.log('update: success', err.message);
+          console.log('update: success');
+          /*
+          ReactDOM.render(
+            <Popup />,
+            document.getElementById('popupContainer')
+          );
+          */
         })
         .catch(function (err) {
-          console.log('update: failure', err.message);
+          console.log('update: failure');
           /*
           ReactDOM.render(
             <Popup />,
@@ -94,6 +100,12 @@ class UserForm extends React.Component {
   }
 
   render() {
+
+    ReactDOM.render(
+      <p></p>,
+      document.getElementById('toolbar')
+    );
+
     return (
       <form onSubmit={this.handleSubmit}>
         <fieldset>

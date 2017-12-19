@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var UserForm = require('../user/UserForm');
+var UserForm = require('./UserForm');
 
 class Toolbar extends React.Component {
 

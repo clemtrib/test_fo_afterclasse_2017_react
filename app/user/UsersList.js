@@ -2,6 +2,7 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const request = require('superagent');
 const UserForm = require('./UserForm');
+const UserToolbar = require('./UserToolbar');
 
 const urlApi = "http://afterclasse.local";
 
@@ -35,10 +36,10 @@ class UsersListItem extends React.Component {
       <tr key={user.id}>
         <td>{user.firstname} {user.lastname.toUpperCase()}</td>
         <td>{user.email.toLocaleLowerCase()}</td>
-        <td>+33 (0) {user.phone}</td>
+        <td>{user.phone}</td>
         <td>
           <button className="square" onClick={() => this.updateUser({user})}>
-            Updade
+            Update
           </button>
           <button className="square" onClick={() => this.deleteUser({user})}>
             Delete
@@ -52,10 +53,35 @@ class UsersListItem extends React.Component {
 
 class UsersList extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      listUsers: []
+    }
+  }
+
+  componentDidMount() {
+    var _this = this;
+    
+    request
+      .get(urlApi + '/students')
+      .then(function (res) {
+        _this.setState({
+          listUsers: JSON.parse(res.text)
+        });
+      })
+      .catch(function (err) {
+        console.log("Une erreur est survenue lors du chargement.");
+      });
+  }
+
   render() {
-    const listUsers = this.props.users;
-    if (!listUsers) {
-      return <p>Une erreur est survenue.</p>
+    ReactDOM.render(
+      <UserToolbar/>,
+      document.getElementById('toolbar')
+    );
+    if (this.state.listUsers.length === 0) {
+      return <p>Il n'y a pas de données.</p>
     }
     return (
       <table>
@@ -68,7 +94,7 @@ class UsersList extends React.Component {
         </tr>
         </thead>
         <tbody>
-        <UsersListItem usersItem={listUsers}/>
+        <UsersListItem usersItem={this.state.listUsers}/>
         </tbody>
       </table>
     )

@@ -20,13 +20,8 @@ class UsersListItem extends React.Component {
     request
       .delete(urlApi + '/student')
       .send(data)
-      .then(function (res) {
-        console.log('delete: success');
-        // res.body, res.headers, res.status
-      })
-      .catch(function (err) {
-        console.log('delete: failure');
-        // err.message, err.response
+      .then(function () {
+        location.reload();
       });
   }
 
@@ -39,10 +34,10 @@ class UsersListItem extends React.Component {
         <td>{user.phone}</td>
         <td>
           <button className="square" onClick={() => this.updateUser({user})}>
-            Update
+            Modifier
           </button>
           <button className="square" onClick={() => this.deleteUser({user})}>
-            Delete
+            Supprimer
           </button>
         </td>
       </tr>
@@ -62,26 +57,22 @@ class UsersList extends React.Component {
 
   componentDidMount() {
     var _this = this;
-    
     request
       .get(urlApi + '/students')
       .then(function (res) {
         _this.setState({
           listUsers: JSON.parse(res.text)
         });
-      })
-      .catch(function (err) {
-        console.log("Une erreur est survenue lors du chargement.");
+        ReactDOM.render(
+          <UserToolbar/>,
+          document.getElementById('toolbar')
+        );
       });
   }
 
   render() {
-    ReactDOM.render(
-      <UserToolbar/>,
-      document.getElementById('toolbar')
-    );
     if (this.state.listUsers.length === 0) {
-      return <p>Il n'y a pas de données.</p>
+      return <p></p>;
     }
     return (
       <table>
